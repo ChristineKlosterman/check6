@@ -15,7 +15,7 @@
 
     <button class="m-2 btn btn-danger" @click="cancelEvent">Cancel</button>
 
-    <button v-if="events.capacity > 0 && events.isCanceled == false" class="m-2 btn btn-success text-dark"
+    <button v-if="events.capacity > 0 && events.isCanceled == false && !hasTicket" class="m-2 btn btn-success text-dark"
         @click="buyTicket">Get Ticket</button>
 
     <div v-if="events.isCanceled">
@@ -83,6 +83,12 @@ export default {
             events: computed(() => AppState.activeEvent),
             ticketAccount: computed(() => AppState.ticketAccount),
             comments: computed(() => AppState.comments),
+            hasTicket: computed(() => {
+                if (AppState.ticketAccount.find(t => t.accountId == AppState.account.id)) {
+                    return true
+                }
+                return false
+            }),
 
             async cancelEvent() {
                 try {

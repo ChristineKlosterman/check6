@@ -24,7 +24,7 @@
                 <input type="date" class="form-control" v-model="editable.startDate">
             </div>
             <div class="">
-                <label for="type" class="form-label ">Type</label>
+                <label for="type" class="type form-label ">Type</label>
                 <select v-model="editable.type" name="" id="" class="form-control">
                     <option value="concert">concert</option>
                     <option value="convention">convention</option>
@@ -68,3 +68,8 @@ export default {
 
 
 </script>
+<style scoped lang="scss">
+.type:hover {
+    cursor: pointer;
+}
+</style>
